@@ -1,0 +1,40 @@
+syntax = "proto3";
+package api;
+
+option go_package = "port-domain-service/api";
+
+message Port {
+    string portKey = 1;
+    string name = 2;
+    string city = 3;
+    string country = 4;
+    repeated string alias = 5;
+    repeated string regions = 6;
+    repeated double coordinates = 7;
+    string province = 8;
+    string timezone = 9;
+    repeated string unlocs = 10;
+    string code = 11;
+}
+
+message PutPortRequest {
+    Port port = 1;
+} 
+
+message PutPortResponse {
+
+}
+
+message GetPortRequest {
+    string portKey = 1;
+} 
+
+message GetPortResponse {
+    Port port = 1;
+}
+
+
+service DomainPortService {
+  rpc putPort(PutPortRequest) returns (PutPortResponse);
+  rpc getPort(GetPortRequest) returns (GetPortResponse);
+}
